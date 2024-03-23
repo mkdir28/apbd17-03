@@ -14,8 +14,8 @@ public class ShipContainer
         MaxSpeedWeight = maxSpeedWeight;
     }
     
-    //Load cargo into a given container
-    public void LoadCargo(List<RefrigeratedContainer> container) {
+    //Load a container onto a ship
+    public void LoadCargoToShip(List<RefrigeratedContainer> container) {
         foreach (var cargoload in container) {
             if (ContainerTransport.Count >= MaxSpeedNumber)
                 throw new System.Exception("Error - cannot load more containers.");
@@ -35,14 +35,29 @@ public class ShipContainer
     }
     
     //Replace a container on the ship with a given number with another container
-    
+    public void ReplaceContainerWithGivenNumber(RefrigeratedContainer container1, 
+        RefrigeratedContainer container2){
+        int replace = ContainerTransport.IndexOf(container1);
+        if (replace != -1)
+            ContainerTransport[replace] = container2;
+        else
+            throw new System.Exception("No container with this nuber.");
+    }
     
     // The possibility of transferring a container between two ships
-    
+    public static void TransferBetweenTwoShips(ShipContainer shop1, 
+        ShipContainer ship2, RefrigeratedContainer container) {
+        shop1.UnloadContainer(container);
+        ship2.LoadCargoToShip(new List<RefrigeratedContainer> {
+            container
+        }
+        );
+    }
     
     //Remove a container from the ship
-    
-    //Load a container onto a ship
+    public void RemoveContainerFromShip(RefrigeratedContainer container){
+        UnloadContainer(container);
+    }
     
     //Print information about a given container
     public void PrintInfoContainer(RefrigeratedContainer container) {
