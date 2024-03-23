@@ -46,5 +46,4 @@ public class RefrigeratedContainer
             throw new System.Exception("Error - the temperature of the container cannot be lower than the temperature required by a given type of product.");
         TemperatureNow = temperature;
     }
-    
 }
