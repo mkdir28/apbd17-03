@@ -20,7 +20,7 @@ public class LiquidContainer : Container, IHazardNotifier
     public override void Load(double cargoMass)
     {
         if (cargoMass > MaxPayload * 0.5){
-                Notification(SerialNumber.ToString());
+                Notification(SerialNumber);
                 throw new System.Exception("Cannot load hazardous cargo more than 50% of its capacity.");
         } else if (cargoMass > MaxPayload * 0.9) 
                 throw new System.Exception("Up to 90% of capacity - dangerous operation.");
