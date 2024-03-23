@@ -9,7 +9,12 @@ public class LiquidContainer : Container, IHazardNotifier
         double depth, double serialNumber, double maxPayload) : base(cargo, height, mass,
         weight, depth, serialNumber, maxPayload)
     {
-        
+        Cargo = cargo;
+        Height = height;
+        Mass = mass;
+        Depth = depth;
+        SerialNumber = serialNumber;
+        MaxPayload = maxPayload;
     }
     
 
@@ -32,6 +37,6 @@ public class LiquidContainer : Container, IHazardNotifier
     }
 
     public void Notification(string numberOfContainer) {
-        throw new NotImplementedException();
+        throw new NotImplementedException("Hazardous event detected.");
     }
 }
