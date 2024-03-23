@@ -1,3 +1,4 @@
+using Tutorial3.Exception;
 using Tutorial3.Interfaces;
 
 namespace Tutorial3.Containers;
@@ -19,6 +20,16 @@ public class GasContainer: Container, IHazardNotifier
 
     public void Notification(string numberOfContainer)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException("Hazardous event detected.");
+    }
+    
+    public override void Load(double cargoMass)
+    {
+        if (cargoMass > MaxPayload)
+        {
+            throw new OverfillException("Error - exceeds the allowable payload.");
+        }
+
+        base.Load(cargoMass); 
     }
 }
