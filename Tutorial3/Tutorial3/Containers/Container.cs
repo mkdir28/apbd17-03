@@ -33,12 +33,12 @@ public abstract class Container : IContainer
         throw new NotImplementedException();
     }
 
-    public void Empty()
+    public virtual void Empty()
     {
         Mass = 0;
     }
     
-    public virtual void Load(double cargoWeight)
+    public virtual void Load(double cargoMass)
     {
         //throw new NotImplementedException();
         if (Mass > MaxPayload)
@@ -46,6 +46,6 @@ public abstract class Container : IContainer
             throw new OverfillException();
         }
 
-        Mass = cargoWeight;
+        Mass = cargoMass;
     }
 }
