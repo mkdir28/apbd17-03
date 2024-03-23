@@ -5,21 +5,19 @@ namespace Tutorial3.Containers;
 
 public abstract class Container : IContainer
 {
-    public double Cargo { get; set; }
     public double Height { get; set; }
     public double Mass { get; set; }
     public double Weight { get; set; }
     public double Depth { get; set; }
-    public double SerialNumber { get; set; }
+    public string SerialNumber { get; set; }
     public double MaxPayload { get; set; }
 
 
     
     //ctor - constractor
-    protected Container(double cargo, double height, double mass, double weight,
-        double depth, double serialNumber, double maxPayload)
+    protected Container(double height, double mass, double weight,
+        double depth, string serialNumber, double maxPayload)
     {
-        Cargo = cargo;
         Height = height;
         Mass = mass;
         Weight = weight;

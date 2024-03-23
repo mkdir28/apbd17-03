@@ -6,9 +6,9 @@ namespace Tutorial3.Containers;
 public class GasContainer: Container, IHazardNotifier
 {
     public double Pessure { get; set; }
-    public GasContainer(double cargo, double height, double mass, double weight,
-        double depth, double serialNumber, double maxPayload, double pressure)
-        : base(cargo, height, mass, weight, depth, serialNumber, maxPayload)
+    public GasContainer(double height, double mass, double weight,
+        double depth, string serialNumber, double maxPayload, double pressure)
+        : base(height, mass, weight, depth, serialNumber, maxPayload)
     {
         Pessure = pressure;
     }
