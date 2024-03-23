@@ -15,14 +15,19 @@ using Tutorial3.Containers;
 LiquidContainer liquidContainer = new LiquidContainer(12, 100, 20, 22, "KON-C-1", 120);
 GasContainer gasContainer = new GasContainer(22, 120, 33, 22, "KON-C-2", 100, 3);
 
+
 // Create a refrigerated container
-RefrigeratedContainer container1 = new RefrigeratedContainer(PossibleProduct.Bananas, 13.3, 1000);
+RefrigeratedContainer container1 = new RefrigeratedContainer(PossibleProduct.Bananas, 13, 13.3, 12,
+    100, 20, 22, "KON-C-1", 120);
 
 // Create another refrigerated container
-RefrigeratedContainer container2 = new RefrigeratedContainer(PossibleProduct.Fish, 2, 2000);
+RefrigeratedContainer container2 = new RefrigeratedContainer(PossibleProduct.Fish, 2, 2, 10, 10, 20, 22,
+    "KON-C-3", 50);
+
 
 // Create a ship container
-ShipContainer ship = new ShipContainer(30, 130, 4000);
+ShipContainer ship = new ShipContainer(30, 100, 4000, PossibleProduct.Meat, -15,
+    -15, 40,100,27,40,"K0N-C-4", 200);
 
 
 
@@ -39,14 +44,15 @@ ship.UnloadContainer(container1);
 ship.PrintInfoShip();
 
 // Replace a container on the ship with another container
-RefrigeratedContainer newContainer = new RefrigeratedContainer(PossibleProduct.Chocolate, 18, 1500);
+RefrigeratedContainer newContainer = new RefrigeratedContainer(PossibleProduct.Chocolate, 18, 18, 10, 20, 10, 15, "KON-C-5", 30);
 ship.ReplaceContainerWithGivenNumber(container2, newContainer);
 
 // Print updated information about the ship and its cargo
 ship.PrintInfoShip();
 
 // Transfer a container between two ships
-ShipContainer anotherShip = new ShipContainer(25, 120, 6000);
+ShipContainer anotherShip = new ShipContainer(30, 100, 4000, PossibleProduct.Meat, -15,
+    -15, 40,100,27,40,"K0N-C-4", 200);
 ShipContainer.TransferBetweenTwoShips(ship, anotherShip, newContainer);
 
 // Print information about both ships and their cargo after the transfer

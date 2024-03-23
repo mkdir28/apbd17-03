@@ -1,22 +1,19 @@
 namespace Tutorial3.Containers;
 
-public class RefrigeratedContainer
+public class RefrigeratedContainer: Container
 {
     public PossibleProduct ProductType { get; set; }
     public double TemperatureNow { get; set; }
     public double TemperatureRequiered { get; set; }
 
     public RefrigeratedContainer(PossibleProduct productType, double temperatureNow,
-        double temperatureRequiered)
+        double temperatureRequiered, double height, double mass, double weight,
+        double depth, string serialNumber, double maxPayload): base(height, mass,
+        weight,depth, serialNumber, maxPayload)
     {
         ProductType = productType;
         TemperatureNow = temperatureNow;
         TemperatureRequiered = temperatureRequiered;
-    }
-
-    protected RefrigeratedContainer()
-    {
-        throw new NotImplementedException();
     }
 
     private double GetTemperature(PossibleProduct products) {

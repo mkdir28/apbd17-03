@@ -1,13 +1,16 @@
 namespace Tutorial3.Containers;
 
-public class ShipContainer
+public class ShipContainer: RefrigeratedContainer
 {
     public List<RefrigeratedContainer> ContainerTransport { get; set; }
     public double MaxSpeed { get; set;}
     public int MaxSpeedNumber { get; set;}
     public double MaxSpeedWeight { get; set;}
     
-    public ShipContainer(double maxSpeed, int maxContainerNumber, double maxSpeedWeight) {
+    public ShipContainer(double maxSpeed, int maxContainerNumber, double maxSpeedWeight, PossibleProduct productType, double temperatureNow,
+        double temperatureRequiered, double height, double mass, double weight,
+        double depth, string serialNumber, double maxPayload): base(productType, temperatureNow, temperatureRequiered,
+        height,mass, weight, depth, serialNumber, maxPayload){
         ContainerTransport = new List<RefrigeratedContainer>();
         MaxSpeed = maxSpeed;
         MaxSpeedNumber = maxContainerNumber;
@@ -50,8 +53,7 @@ public class ShipContainer
         shop1.UnloadContainer(container);
         ship2.LoadCargoToShip(new List<RefrigeratedContainer> {
             container
-        }
-        );
+        });
     }
     
     //Remove a container from the ship
@@ -60,22 +62,20 @@ public class ShipContainer
     }
     
     //Print information about a given container
-    public void PrintInfoContainer(RefrigeratedContainer container) {
-        Console.WriteLine("Product Type - {container}.ProductType}};" +
-                          "Required Temperature - {{container.TemperatureRequiered}};" +
-                          "Current Temperature - {{container.TemperatureNow}}");
+    public void PrintInfoContainer() {
+        Console.WriteLine("Information about container ->" +  
+                          "\n"+ "Product Type: " + ProductType + "\n" +
+                          "Required Temperature: " + TemperatureRequiered + "\n" +
+                          "Current Temperature: " + TemperatureNow);
     }
     
     // Print information about a given ship and its cargo
     public void PrintInfoShip()
     {
-        Console.WriteLine("Information about a ship: Max Speed - {MaxSpeed};" +
-                          "Max Container Number - {MaxSpeedNumber}; " +
-                          "Max Weight - {MaxSpeedWeight}");
+        Console.WriteLine("Information about a ship: Max Speed -> " + "\n" + 
+                          MaxSpeed + "\n" + "Max Container Number: "+ 
+                          MaxSpeedNumber + "\n" + "Max Weight - " + MaxSpeedWeight);
         Console.WriteLine("Information about the Containers:");
-        foreach (var container in ContainerTransport)
-        {
-            PrintInfoContainer(container);
-        }
+        PrintInfoContainer();
     }
 }
